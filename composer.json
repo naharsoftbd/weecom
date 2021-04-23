@@ -1,0 +1,24 @@
+{
+    "name": "jafar/wedevsecom",
+    "description": "This is an Ecommerce Framework Development by Jafar",
+    "type": "php",
+    "require": {
+        "php": "^7.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abu Jafar Md. Salah",
+            "email": "abusalah01diu@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Dashboard\\": "src/Dashboard"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "minimum-stability": "dev"
+}
