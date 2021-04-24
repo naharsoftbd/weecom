@@ -27,5 +27,9 @@ class DB {
         $result = $this->mysqli->query($sql);
         return $result->num_rows;
   }
+  public function db_query($sql){
+        $results = $this->mysqli->query($sql);
+        return $results;
+  }
 }
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 06:42 PM
+-- Generation Time: Apr 24, 2021 at 07:39 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -36,6 +36,13 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `order_status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2021-04-24 08:16:53', '2021-04-24 08:16:53');
+
 -- --------------------------------------------------------
 
 --
@@ -64,16 +71,29 @@ INSERT INTO `order_status` (`id`, `status`) VALUES
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
+  `name` varchar(191) NOT NULL,
   `sku` int(11) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `category_id` int(11) NOT NULL DEFAULT 1,
-  `price` double NOT NULL,
+  `price` double(10,2) NOT NULL,
   `image` varchar(191) DEFAULT NULL,
   `created_by` int(11) NOT NULL,
   `updated_by` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `sku`, `description`, `category_id`, `price`, `image`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Mango', 2322, 'This is Mango ', 1, 10.50, NULL, 1, 1, '2021-04-24 07:55:45', '2021-04-24 07:55:45'),
+(3, 'Appale', 2211, 'This is Appale ', 1, 125.00, NULL, 2, 2, '2021-04-24 08:01:01', '2021-04-24 08:01:01'),
+(4, 'Amazing Pillow 2.0', 5647, 'The best pillow for amazing programmers.', 1, 199.00, NULL, 1, 1, '2021-04-24 17:19:29', '2021-04-24 17:19:29'),
+(5, 'Amazing Pillow 2.0', 199, 'The best pillow for amazing programmers.', 2, 199.00, '', 1, 1, '2021-04-24 17:33:25', '2021-04-24 17:33:25'),
+(10, 'Amazing Pillow 2.0', 200, 'The best pillow for amazing programmers.', 2, 199.00, '', 1, 1, '2021-04-24 17:35:25', '2021-04-24 17:35:25'),
+(11, 'Amazing Pillow 2.0', 201, 'The best pillow for amazing programmers.', 2, 199.00, '', 1, 1, '2021-04-24 17:35:46', '2021-04-24 17:35:46');
 
 -- --------------------------------------------------------
 
@@ -163,7 +183,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -175,7 +195,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `roles`
