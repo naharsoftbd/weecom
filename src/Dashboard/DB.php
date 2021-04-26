@@ -7,6 +7,7 @@ class DB {
 	  private $pass;
 	  private $db;
 	  private $mysqli;
+    public $insert_id;
 	  public function __construct() {
 	    $this->db_connect();
 	  }
@@ -29,6 +30,7 @@ class DB {
   }
   public function db_query($sql){
         $results = $this->mysqli->query($sql);
+        $this->insert_id = $this->mysqli->insert_id; 
         return $results;
   }
 }
