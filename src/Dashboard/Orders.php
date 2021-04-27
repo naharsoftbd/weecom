@@ -5,26 +5,35 @@ use Dashboard\DB as DB;
 
 class Orders {
 	protected $conn;
+	private static $instance;
 	public function __construct(){
 		$this->conn = new DB();
 	}
 	
+	public function getInstance(){
+      if(!isset(Orders::$instance)){
+       return Orders::$instance = new Orders();
+	   }
+	}
 	public function getOrders(){
 
 		$orders_arr=array();
 		$orders_arr["orders"]=array();
-		$result = $this->conn->db_query("SELECT * FROM orders");
+		$result = $this->conn->db_query("SELECT *,os.status as order_status FROM orders as o inner join order_items as oi on o.id=oi.order_id inner join products as p on p.id = oi.product_id
+			INNER JOIN order_status as os on os.id = o.order_status
+			INNER JOIN users as us on us.id = o.user_id");
 		$count_row = $this->conn->db_num("SELECT * FROM orders"); 
 		if ($count_row> 0) {
 			while ($row = $result->fetch_assoc()){
 
 				$order_item=array(
 					"id" => $row['id'],
-					"user_id" => $row['user_id'],
-            //"description" => html_entity_decode($row['description']),
-           // "price" => $row['price'],
-            //"category_id" => $row['category_id'],
-           // "category_name" => $category_name
+					"user_name" => $row['display_name'],
+					'product_name' => $row['name'],
+                     "price" => $row['order_price'] * $row['qty'],
+                     "quentaty" =>$row['qty'],
+                     "order_status" =>$row['order_status'],
+            
 				);
 
 				array_push($orders_arr["orders"], $order_item);

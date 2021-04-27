@@ -40,7 +40,7 @@ public function read(){
             "description" => html_entity_decode($row['description']),
             "price" => $row['price'],
             "category_id" => $row['category_id'],
-           // "category_name" => $category_name
+           "image" => $row['image']
         );
         
         array_push($products_arr["products"], $product_item);

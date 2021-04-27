@@ -10,9 +10,13 @@ header('Access-Control-Allow-Origin: *');
 
 use Dashboard\Products as Products;
 use Dashboard\Orders as Orders;
+use Dashboard\Users as Users;
 $product = new Products();
 $products = $product::getInstance();
 $orders = new Orders();
+$orders = orders::getInstance();
+$users = new Users();
+$user = users::getInstance();
 // Product Read,Create,Update,Delete
 if(isset($_GET['products'])){
 if($_GET['products']=='read'){
@@ -52,6 +56,7 @@ if($_GET['products']=='read'){
 }
 
 // Order Read,
+if(isset($_GET['orders'])){
 if($_GET['orders']=='read'){
 	if(isset($_GET['user_id'])){
 		$user_id = $_GET['user_id'];
@@ -68,5 +73,14 @@ if($_GET['orders']=='read'){
 	}else{
 		return $orders->getOrders();
 	}
+}
+}
+
+if(isset($_GET['user'])){
+if($_GET['user']=='login'){
+	if(isset($_GET['username']) && isset($_GET['password'])){
+		return $user->userLogedin($_GET['username'],$_GET['password']);
+	}
+}
 }
 
