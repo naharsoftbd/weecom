@@ -73,7 +73,40 @@ public function getProductsbyUser($user_id){
             "description" => html_entity_decode($row['description']),
             "price" => $row['price'],
             "category_id" => $row['category_id'],
-           // "category_name" => $category_name
+            "image" => $row['image']
+        );
+        
+        array_push($products_arr["products"], $product_item);
+    }
+
+    http_response_code(200);
+    echo  json_encode($products_arr);
+}else{
+  
+    // set response code - 404 Not found
+    http_response_code(404);
+    
+    // tell the user no products found
+    echo json_encode(
+        array("message" => "No products found.")
+    );
+}
+}
+public function getProductsbyId($product_id){
+  $products_arr=array();
+  $products_arr["products"]=array();
+  $result = $this->conn->db_query("SELECT * FROM products where id=$product_id");
+  $count_row = $this->conn->db_num("SELECT * FROM products where id=$product_id"); 
+  if ($count_row> 0) {
+      while ($row = $result->fetch_assoc()){
+       
+        $product_item=array(
+            "id" => $row['id'],
+            "name" => $row['name'],
+            "description" => html_entity_decode($row['description']),
+            "price" => $row['price'],
+            "category_id" => $row['category_id'],
+            "image" => $row['image']
         );
         
         array_push($products_arr["products"], $product_item);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2021 at 07:39 PM
+-- Generation Time: Apr 29, 2021 at 01:10 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -42,6 +42,27 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `order_status`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '2021-04-24 08:16:53', '2021-04-24 08:16:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `order_price` double NOT NULL,
+  `qty` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_price`, `qty`, `order_id`, `product_id`) VALUES
+(1, 200, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -88,12 +109,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `sku`, `description`, `category_id`, `price`, `image`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Mango', 2322, 'This is Mango ', 1, 10.50, NULL, 1, 1, '2021-04-24 07:55:45', '2021-04-24 07:55:45'),
-(3, 'Appale', 2211, 'This is Appale ', 1, 125.00, NULL, 2, 2, '2021-04-24 08:01:01', '2021-04-24 08:01:01'),
-(4, 'Amazing Pillow 2.0', 5647, 'The best pillow for amazing programmers.', 1, 199.00, NULL, 1, 1, '2021-04-24 17:19:29', '2021-04-24 17:19:29'),
-(5, 'Amazing Pillow 2.0', 199, 'The best pillow for amazing programmers.', 2, 199.00, '', 1, 1, '2021-04-24 17:33:25', '2021-04-24 17:33:25'),
-(10, 'Amazing Pillow 2.0', 200, 'The best pillow for amazing programmers.', 2, 199.00, '', 1, 1, '2021-04-24 17:35:25', '2021-04-24 17:35:25'),
-(11, 'Amazing Pillow 2.0', 201, 'The best pillow for amazing programmers.', 2, 199.00, '', 1, 1, '2021-04-24 17:35:46', '2021-04-24 17:35:46');
+(1, 'Mango', 2322, 'This is Mango ', 1, 10.50, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 07:55:45', '2021-04-24 07:55:45'),
+(3, 'Appale', 2211, 'This is Appale ', 1, 125.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 2, 2, '2021-04-24 08:01:01', '2021-04-24 08:01:01'),
+(4, 'Amazing Pillow 2.0', 5647, 'The best pillow for amazing programmers.', 1, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:19:29', '2021-04-24 17:19:29'),
+(5, 'Amazing Pillow 2.0', 199, 'The best pillow for amazing programmers.', 2, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:33:25', '2021-04-24 17:33:25'),
+(10, 'Amazing Pillow 2.0', 200, 'The best pillow for amazing programmers.', 2, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:35:25', '2021-04-24 17:35:25'),
+(11, 'Amazing Pillow 2.0', 201, 'The best pillow for amazing programmers.', 2, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:35:46', '2021-04-24 17:35:46');
 
 -- --------------------------------------------------------
 
@@ -127,6 +148,7 @@ CREATE TABLE `users` (
   `user_name` varchar(100) NOT NULL,
   `display_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `password` varchar(191) NOT NULL,
   `user_role` int(11) NOT NULL,
   `status` tinyint(2) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -137,8 +159,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `display_name`, `email`, `user_role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'jafar', 'Abu Jafar', 'abusalah01diu@gmail.com', 1, 1, '2021-04-23 15:46:35', '2021-04-23 15:46:35');
+INSERT INTO `users` (`id`, `user_name`, `display_name`, `email`, `password`, `user_role`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'jafar', 'Abu Jafar', 'abusalah01diu@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, '2021-04-23 15:46:35', '2021-04-23 15:46:35'),
+(2, 'jafar', 'Abu Jafar', 'naharsoftbd@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, 1, '2021-04-23 15:46:35', '2021-04-23 15:46:35');
 
 --
 -- Indexes for dumped tables
@@ -148,6 +171,12 @@ INSERT INTO `users` (`id`, `user_name`, `display_name`, `email`, `user_role`, `s
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -186,6 +215,12 @@ ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
@@ -207,7 +242,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

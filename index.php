@@ -23,6 +23,9 @@ if($_GET['products']=='read'){
 	if(isset($_GET['user_id'])){
 		$user_id = $_GET['user_id'];
 		return $products->getProductsbyUser($user_id);
+	}elseif(isset($_GET['id'])){
+		$product_id = $_GET['id'];
+		return $products->getProductsbyId($product_id);
 	}else{
 		return $products->read();
 	}
