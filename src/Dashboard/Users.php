@@ -29,7 +29,8 @@ class Users {
 					"id" => $row['id'],
 					"user_name" => $row['display_name'],
 					'email' => $row['email'],
-                     "display_name" => $row['display_name'],
+                    "display_name" => $row['display_name'],
+                    "user_role" => $row['user_role']
                      
             
 				);

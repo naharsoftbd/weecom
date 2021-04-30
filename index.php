@@ -3,7 +3,8 @@
 // Autoload files using the Composer autoloader.
 require_once __DIR__ . '/vendor/autoload.php';
 header('Access-Control-Allow-Origin: *');
-			header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods","OPTIONS,DELETE, POST, GET");
 			
 
 
@@ -31,13 +32,15 @@ if($_GET['products']=='read'){
 	}
 	
 }elseif($_GET['products']=='create'){
-	if(isset($_GET['user_id'])){
-		$user_id = $_GET['user_id'];
+	//if(isset($_GET['user_id'])){
+		//$user_id = $_POST['user_id'];
+	     
 		$data = json_decode(file_get_contents("php://input"));
+		$user_id = $data->user_id;
 		return $products->createProduct($user_id,$data);
-	}else{
-		return $products->read();
-	}
+	//}else{
+	//	return $products->read();
+	//}
 	
 }elseif($_GET['products']=='update'){
 	if(isset($_GET['user_id'])){

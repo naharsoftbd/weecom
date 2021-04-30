@@ -127,23 +127,23 @@ public function getProductsbyId($product_id){
 }
 public function createProduct($user_id,$data){
 	// make sure data is not empty
-
+   //echo json_encode(array("message" => $data->category_id));
+   //exit;
     if(
         !empty($data->name) &&
         !empty($data->price) &&
-        !empty($data->description) &&
-        !empty($data->category_id)
+        !empty($data->description) 
     ){ 
 
     // set product property values
         
-     $product = $this->conn->db_query("INSERT INTO `products` (`name`, `sku`, `description`, `category_id`, `price`, `image`, `created_by`, `updated_by`) VALUES ('$data->name', $data->sku, '$data->description', $data->category_id, $data->price, '', $user_id, $user_id);");
-
+     $product = $this->conn->db_query("INSERT INTO `products` (`name`, `sku`, `description`, `category_id`, `price`, `image`, `created_by`, `updated_by`) VALUES ('$data->name', $data->sku, '$data->description', 1, $data->price, '', $user_id, $user_id);");
+    
     // create the product
      if($product){
       
         // set response code - 201 created
-        http_response_code(201);
+        http_response_code(200);
         
         // tell the user
         echo json_encode(array("message" => "Product was created."));
