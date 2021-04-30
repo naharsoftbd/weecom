@@ -43,13 +43,9 @@ if($_GET['products']=='read'){
 	//}
 	
 }elseif($_GET['products']=='update'){
-	if(isset($_GET['user_id'])){
-		$user_id = $_GET['user_id'];
-		$data = json_decode(file_get_contents("php://input"));
+	    $data = json_decode(file_get_contents("php://input"));
+		$user_id = $data->user_id;
 		return $products->updateProduct($user_id,$data);
-	}else{
-		return $products->read();
-	}
 	
 }elseif($_GET['products']=='delete'){
 	if(isset($_GET['product_id'])){

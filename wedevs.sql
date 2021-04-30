@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2021 at 01:10 PM
+-- Generation Time: Apr 30, 2021 at 12:03 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -114,7 +114,9 @@ INSERT INTO `products` (`id`, `name`, `sku`, `description`, `category_id`, `pric
 (4, 'Amazing Pillow 2.0', 5647, 'The best pillow for amazing programmers.', 1, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:19:29', '2021-04-24 17:19:29'),
 (5, 'Amazing Pillow 2.0', 199, 'The best pillow for amazing programmers.', 2, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:33:25', '2021-04-24 17:33:25'),
 (10, 'Amazing Pillow 2.0', 200, 'The best pillow for amazing programmers.', 2, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:35:25', '2021-04-24 17:35:25'),
-(11, 'Amazing Pillow 2.0', 201, 'The best pillow for amazing programmers.', 2, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:35:46', '2021-04-24 17:35:46');
+(11, 'Amazing Pillow 2.0', 201, 'The best pillow for amazing programmers.', 2, 199.00, 'https://images.freeimages.com/images/large-previews/89a/one-tree-hill-1360813.jpg', 1, 1, '2021-04-24 17:35:46', '2021-04-24 17:35:46'),
+(30, 'test 1', 12351, 'This is test products', 1, 500.00, '', 1, 1, '2021-04-30 09:25:26', '2021-04-30 09:25:26'),
+(35, 'Amazing Pillow 2.0.1', 123456, 'Tes 1', 1, 1500.50, '', 1, 1, '2021-04-30 10:02:04', '2021-04-30 10:02:04');
 
 -- --------------------------------------------------------
 
@@ -230,7 +232,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `roles`
